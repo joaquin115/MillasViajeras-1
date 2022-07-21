@@ -8,7 +8,7 @@ Millas Viajeras - Registro
 
 {% block contenido %}
 
-<section class="bg-light py-5">
+<!-- <section class="bg-light py-5">
     <div class="container px-5">
         <h1>Registrate</h1>
         <form action="" method="post">
@@ -17,5 +17,27 @@ Millas Viajeras - Registro
             <button type="submit">Registrar</button>
         </form>
     </div>
-</section>
+</section> -->
+
+<br>
+    <div class="col-lg-3 mb-5" style="margin-left: auto; margin-right: auto;">
+        <div class="card h-100 shadow border-0">            
+            <div class="card-body p-4">
+                <h1>- Registrarse -</h1>
+                <hr>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    
+                        <table style="margin-right: 25px;">
+                    
+                            {{form.as_table}}
+                    
+                        </table>
+                        <br>
+                        <input type="submit" class="btn btn-primary" value="Enviar">
+                    
+                    </form>                                                 
+            </div>                                
+        </div>
+    </div>
 {% endblock %}

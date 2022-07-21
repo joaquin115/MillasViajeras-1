@@ -8,9 +8,14 @@ Millas Viajeras - Inicio
 {%block contenido%}
 
 {%load static%}
+            {%for msg in messages%}
+            <div class="alert alert-success" role="alert" style="max-width: 350px; text-align: center; margin-left: auto; margin-right: auto;">
+                {{msg}}
+            </div>
+            {%endfor%}
             <!-- Header-->
             <header class="bg-dark py-5">
-                <div class="container px-5">
+                <div class="container px-5">                    
                     <div class="row gx-5 align-items-center justify-content-center">
                         <div class="col-lg-8 col-xl-7 col-xxl-6">
                             <div class="my-5 text-center text-xl-start">
@@ -28,10 +33,11 @@ Millas Viajeras - Inicio
                 <br>
                 <br>
             </header>     
-            <!-- Testimonial section-->
+                <!-- Testimonial section-->
+            
             <br>
             <br>
-            <h1 style="text-align: center;">Nuestra Comunidad</h1>
+            <h1 class="fw-bolder fs-2 mb-2" style="text-align: center;">Nuestra Comunidad</h1>
             <br>
             <br>
             <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">                
@@ -49,23 +55,61 @@ Millas Viajeras - Inicio
                         <div class="fst-italic text-muted"><b>{{total_publicaciones}}</b></div>
                     </div>
                 </div>
-            </div>            
-            <!-- Blog preview section-->
-            <section class="py-5">                
-                <div class="container px-5 my-5" >
-                    <div class="row gx-5 justify-content-center">
-                        <div class="col-lg-8 col-xl-6">
-                            <div class="text-center">
-                                <h2 class="fw-bolder">Ultima Publicacion</h2>
-                                <hr>
-                                <br>                                
+            </div>
+            <br>
+            <br>
+            <br>
+            <section class="py-5 bg-light">
+                <div class="container px-5">
+                    <div class="row gx-5">
+                        <div class="col-xl-8">
+                            <h2 class="fw-bolder fs-2 mb-2" style="text-align: left;">- Ultimos Comentarios</h2>
+                            <br>
+                            <!-- News item-->
+                            {%for comentario in comentarios%}
+                            <div class="mb-4">
+                                <div class="small text-muted"> <i>{{comentario.autor}} | {{comentario.fecha}} </i></div>
+                                <p class="text-muted h4 "><i>"{{comentario.comentario}}"</i></p>
+                            </div>
+                            {%endfor%}                                                       
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="card border-0 h-100">
+                                <div class="card-body p-4">
+                                    <div class="d-flex h-100 align-items-center justify-content-center">
+                                        <div class="text-center">
+                                            <div class="h3 fw-bolder">Contacto</div>
+                                            <br>
+                                            <p class="text-muted mb-4">
+                                                Para contactarte con nosotros, <br>
+                                                escribinos a 
+                                                <br>
+                                                <p href="#!">info@millasviajeras.com</p>
+                                            </p>                                            
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row gx-5">
+                </div>
+            </section>            
+            <!-- Blog preview section-->
+        
                         {%if publicaciones|length == 0 %}
-                        <h1 style="text-align: center;">No hay publicaciones aun...</h1>
+                        
                         {%else%}
+                        <section class="py-5">                
+                            <div class="container px-5 my-5" >
+                                <div class="row gx-5 justify-content-center">
+                                    <div class="col-lg-8 col-xl-6">
+                                        <div class="text-center">
+                                            <h2 class="fw-bolder">Ultima Publicacion</h2>
+                                            <hr>
+                                            <br>                                
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row gx-5">
                             <div class="col-lg-4 mb-5" style="margin-left: auto; margin-right: auto;">
                                 <div class="card h-100 shadow border-0">
                                     <img class="card-img-top" src="{{ultima_publicacion.imagen.url}}" alt="..." />
@@ -81,7 +125,30 @@ Millas Viajeras - Inicio
                             </div>
                         {%endif%}                        
                     </div>              
-                </div>
+                </div>        
+                <section class="bg-light py-5">
+                    <div class="container px-5 my-5 px-5">
+                        <div class="text-center mb-5">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+                            <h2 class="fw-bolder">Dejanos tus comentarios</h2>
+                            <p class="lead mb-0">Nos interesa conocer tu opinion</p>
+                        </div>
+                        <div class="row gx-5 justify-content-center">
+                            <div class="col-lg-5">                            
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+
+                                    <div class="form-floating mb-2">
+                                        {{comentario.as_p}}
+                                        <br>
+                                        <br>
+                                    <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Enviar</button></div>                                    
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>                
             </section>
         </main>        
 {%endblock%}

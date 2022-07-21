@@ -22,8 +22,15 @@ Millas Viajeras - Editar Perfil
                     
                         </table>
                         <br>
+                        {%for msg in messages%}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            {{msg}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+                        {%endfor%}
                         <input type="submit" class="btn btn-primary" value="Guardar">
-                        <a class="btn btn-primary" href="{% url 'agregar_avatar' %}" style="text-align: center;">Agregar Avatar</a>                                   
+                        <a class="btn btn-outline-primary" href="{% url 'agregar_avatar' %}" style="text-align: center;">Agregar Avatar</a>                                   
+                        <a class="btn btn-outline-dark" href="{% url 'cambiar_pass' %}" style="text-align: center;">Cambiar Pass</a>                                   
                 </form>                                                 
             </div>                                
         </div>

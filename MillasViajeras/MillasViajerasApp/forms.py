@@ -1,13 +1,16 @@
-from cProfile import label
-from dataclasses import Field
-from urllib import request
+from ctypes import WinDLL
+from dataclasses import fields
+from tkinter import W
 from xmlrpc.client import TRANSPORT_ERROR
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from ckeditor.fields import *
+from django.forms import ModelForm, Textarea
+from numpy import size
 
-from .models import Avatar
+
+from .models import Avatar, Comentario
 
 
 class UserRegisterForm(UserCreationForm):
@@ -28,7 +31,7 @@ class UserEditForm(forms.Form):
 
     email = forms.EmailField(label="Email")  
     first_name = forms.CharField(label="Nombre")
-    last_name = forms.CharField(label="Apellido")
+    last_name = forms.CharField(label="Apellido")    
     
     class Meta:
         model = User
@@ -49,3 +52,19 @@ class AvatarForm(forms.Form):
     class Meta:
         model = Avatar
         fields = ['imagen']
+
+class CrearComentario(forms.Form):
+    comentario = forms.CharField(max_length=130, widget=Textarea)
+      
+
+# class CrearMensaje(forms.Form):
+#     usuario = []
+#     usuarios = User.objects.all()
+
+#     for user in usuarios:
+#         usuario.append(user.email)
+    
+
+#     destinatario = forms.EmailField(label='Email', required=True, widget=forms.Select(choices=[usuario]))
+
+#     mensaje = RichTextFormField(label='Mensaje', required=True, widget=forms.Textarea)

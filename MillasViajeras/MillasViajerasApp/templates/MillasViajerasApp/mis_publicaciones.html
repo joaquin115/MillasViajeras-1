@@ -13,26 +13,39 @@ Millas Viajeras - Mis Publicaciones
 <br>
 <br>
 
-<div class="row gx-5"> 
-    {%for publicacion in publicaciones%}
-    <div class="col-lg-3 mb-5">
-        <div class="card h-100 shadow border-0">
-            <img class="card-img-top" src="{{publicacion.imagen.url}}" alt="..." style="max-width: 300px; max-height: 300px; height: auto; width: auto; align-self: center;"/>
-            <div class="card-body p-4">
-                <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{publicacion.pais}}</div>
-                <h5 class="card-title mb-3">{{publicacion.titulo}}</h5></a>
-                <p class="card-text mb-0">{{publicacion.descripcion|slice:120|safe}}...</p>
-                <br>
-                <p class="card-text mb-0" style="color: grey;">Creado por: <i>{{publicacion.autor}}</i></p>
-                <p class="card-text mb-0" style="color: grey;">Fecha: <i>{{publicacion.fecha_viaje}}</i></p>
-                <br>
-                <a class="btn btn-info btn-lg px-2 me-sm2" href="{% url 'ver_publicacion' publicacion.id %}" style="text-align: center; color: white;">Ver</a>                                   
-                <a class="btn btn-primary btn-lg px-2 me-sm2" href="{% url 'editar_publicacion' publicacion.id %}" style="text-align: center;">Editar</a>                                   
-                <a class="btn btn-danger btn-lg px-2 me-sm2" href="{% url 'eliminar_publicacion' publicacion.id %}" style="text-align: center;">Eliminar</a>                                   
-            </div>                                
-        </div>
-    </div>
-{%endfor%}                            
-</div>
+            {%for msg in messages%}
+            <div class="alert alert-success" role="alert" style="max-width: 350px; text-align: center; margin-left: auto; margin-right: auto;">
+                {{msg}}
+              </div>
+            {%endfor%}
+
+            {%if publicaciones|length == 0 %}
+
+              <h2 style="text-align: center;">No hay publicaciones creadas</h2>
+              <br>
+              <br>
+
+            {%else%}
+
+                <div class="row gx-5"> 
+                    {%for publicacion in publicaciones%}
+                    <div class="col-lg-3 mb-5">
+                        <div class="card h-100 shadow border-0">
+                            <img class="card-img-top" src="{{publicacion.imagen.url}}" alt="..." style="max-width: 300px; max-height: 300px; height: auto; width: auto; align-self: center;"/>
+                            <div class="card-body p-4">
+                                <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{publicacion.pais}}</div>
+                                <h5 class="card-title mb-3">{{publicacion.titulo}}</h5></a>
+                                <p class="card-text mb-0">{{publicacion.descripcion|slice:120|safe}}...</p>
+                                <br>                
+                                <br>
+                                <a class="btn btn-outline-info btn-lg px-2 me-sm2" href="{% url 'ver_publicacion' publicacion.id %}" style="text-align: center;">Ver</a>                                   
+                                <a class="btn btn-outline-primary btn-lg px-2 me-sm2" href="{% url 'editar_publicacion' publicacion.id %}" style="text-align: center;">Editar</a>                                   
+                                <a class="btn btn-outline-danger btn-lg px-2 me-sm2" href="{% url 'eliminar_publicacion' publicacion.id %}" style="text-align: center;">Eliminar</a>                                   
+                            </div>                                
+                        </div>
+                    </div>
+                {%endfor%}             
+                {%endif%}               
+                </div>
 
 {%endblock%}

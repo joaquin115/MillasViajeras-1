@@ -1,0 +1,13 @@
+{%extends "MillasViajerasApp/base.html"%}
+
+{%block contenido%}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Enviar Mensaje</button>
+    </form>
+</div>
+
+{%endblock%}

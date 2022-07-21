@@ -4,12 +4,6 @@ from ckeditor.fields import *
 
 # Create your models here.
 
-class Persona(models.Model):
-
-    nombre = models.CharField(max_length=20)
-    apellido = models.CharField(max_length=20)
-    fecha = models.DateField(max_length=20)
-
 class Publicaciones(models.Model):
     imagen = models.ImageField(null=True, blank=True)
     pais = models.CharField(max_length=50)
@@ -26,5 +20,25 @@ class Publicaciones(models.Model):
 class Avatar(models.Model):
     
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-
     imagen = models.ImageField(upload_to='avatar/', null=True, blank=True)
+
+
+class Comentario(models.Model):
+    comentario = models.CharField(max_length=130)
+    autor = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    fecha = models.DateField()
+
+
+
+# class Mensaje(models.Model):
+
+#     remitente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='remitente')
+#     destinatario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='destinatario')
+
+#     mensaje = models.TextField(max_length=500, blank=True, null=True)
+
+#     updated = models.DateTimeField(auto_now=True)
+#     created = models.DateTimeField(auto_now_add=True)
+
+#     def __str__(self):
+#         return self.mensaje

@@ -15,18 +15,4 @@ class PublicacionesTest(TestCase):
 
     def test_publicacion_descripcion(self):
         publicacion = Publicaciones.objects.get(titulo="Paseando por Recoleta")
-        self.assertEqual(publicacion.descripcion, "Gran viaje por Argentina")
-
-
-class PersonaTest(TestCase):
-
-    def setUp(self):
-        Persona.objects.create(nombre="Matias", apellido="Vazquez", fecha=datetime.datetime.today())
-
-    def test_persona_nombre(self):
-        persona = Persona.objects.get(apellido="Vazquez")
-        self.assertEqual(persona.nombre, "Matias")
-
-
-
-    
+        self.assertEqual(publicacion.descripcion, "Gran viaje por Argentina")    

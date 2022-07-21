@@ -19,7 +19,6 @@ from MillasViajerasApp.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
     path('', inicio),
     path('admin/', admin.site.urls),

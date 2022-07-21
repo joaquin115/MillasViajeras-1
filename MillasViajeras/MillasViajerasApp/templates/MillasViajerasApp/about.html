@@ -1,0 +1,60 @@
+{%extends "MillasViajerasApp/base.html"%}
+
+{%block title%}
+Millas Viajeras - Nosotros
+{%endblock%}
+
+{% load static %}
+
+{%block contenido%}
+            <section class="py-5 bg-dark" >
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="{%static 'assets/coder.jpg' %}" alt="..." /></div>
+                        <div class="col-lg-6">
+                            <h2 class="fw-bolder" style="color: white;">Proyecto Final</h2>
+                            <p class="lead fw-normal text-muted mb-0">Millas Viajeras nace como prototipo para la presentacion de nuestro Proyecto Final del curso Python dictado por CoderHouse. Este proyecto ha sido desarrollado en base a todo lo aprendido durante nuestra cursada.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Team members section-->
+            <section class="py-5 bg-light">
+                <div class="container px-5 my-2">
+                    <div class="text-center">
+                        <h2 class="fw-bolder">Nosotros</h2>
+                        <p class="lead fw-normal text-muted mb-5"><i>Apasionados por Python</i></p>
+                    </div>
+                    <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
+                        <div class="col mb-5 mb-5 mb-xl-0">
+                            <div class="text-center">
+                                <img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." style="max-width: 200px; max-height: 200px;"/>
+                                <h5 class="fw-bolder">Matias Alegre</h5>
+                                <div class="fst-italic text-muted">Estudiante</div>
+                                <div class="fst-italic text-muted">Estudiante</div>
+                            </div>
+                        </div>
+                        <div class="col mb-5 mb-5 mb-xl-0">
+                            <div class="text-center">
+                                <img class="img-fluid rounded-circle mb-4 px-4" src="{%static 'assets/MF.jpg' %}" alt="..." style="max-width: 200px; max-height: 200px;"/>
+                                <h5 class="fw-bolder">Matias Fernandez</h5>
+                                <div class="fst-italic text-muted">Estudiante</div>
+                                <div class="fst-italic text-muted">Buenos Aires, 34 años.</div>
+                            </div>
+                        </div>
+                        <div class="col mb-5 mb-5 mb-sm-0">
+                            <div class="text-center">
+                                <img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." style="max-width: 200px; max-height: 200px;"/>
+                                <h5 class="fw-bolder">Matias Miranda</h5>
+                                <div class="fst-italic text-muted">Estudiante</div>
+                                <div class="fst-italic text-muted">Estudiante</div>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </section>
+        </main>      
+
+
+{%endblock%}
+

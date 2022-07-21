@@ -1,0 +1,43 @@
+{%extends "MillasViajerasApp/base.html"%}
+
+{% load static %}
+
+{%block title%}
+Millas Viajeras - Login
+{%endblock%}
+
+{% block contenido %}
+
+<!-- <section class="bg-light py-5">
+    <div class="container px-5">
+        <h1>Inicio de Sesión</h1>        
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}            
+            <button type="submit">Iniciar Sesión</button>            
+        </form>                     
+    </div>
+</section> -->
+
+<br>
+    <div class="col-lg-3 mb-5" style="margin-left: auto; margin-right: auto;">
+        <div class="card h-100 shadow border-0">            
+            <div class="card-body p-4">
+                <h1>- Iniciar Sesion -</h1>
+                <hr>
+                <form enctype="multipart/form-data" action="" method="POST">
+                    {% csrf_token %}
+                    
+                        <table>
+                    
+                            {{form.as_table}}
+                    
+                        </table>
+                        <br>
+                        <input type="submit" class="btn btn-primary" value="Enviar">
+                    
+                    </form>                                                 
+            </div>                                
+        </div>
+    </div>
+{% endblock %}

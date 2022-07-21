@@ -1,0 +1,87 @@
+{%extends "MillasViajerasApp/base.html"%}
+
+
+{%block title%}
+Millas Viajeras - Inicio
+{%endblock%}
+
+{%block contenido%}
+
+{%load static%}
+            <!-- Header-->
+            <header class="bg-dark py-5">
+                <div class="container px-5">
+                    <div class="row gx-5 align-items-center justify-content-center">
+                        <div class="col-lg-8 col-xl-7 col-xxl-6">
+                            <div class="my-5 text-center text-xl-start">
+                                <h1 class="display-4 fw-bolder text-white mb-2">Bienvenido</h1>
+                                <br>
+                                <p class="lead fw-normal text-white-50 mb-4"><b style="color: white;">Millas Viajeras</b> es un portal de viajes con el objetivo de que nuestros usuarios, puedan compartir sus experiencias alrededor del mundo. Paisajes, gastronomia, aventuras y mucho mas te esperan en este portal hecho por viajeros... y para viajeros. !! </p>                                
+                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="{%static 'assets/portada.jpg' %}" alt="" /></div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+            </header>     
+            <!-- Testimonial section-->
+            <br>
+            <br>
+            <h1 style="text-align: center;">Nuestra Comunidad</h1>
+            <br>
+            <br>
+            <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">                
+                <div class="col mb-5 mb-5 mb-xl-0">
+                    <div class="text-center">
+                        <img class="img-fluid rounded-circle" style="max-height: 150px;" src="{%static 'assets/usuarios.png' %}" alt="..." />
+                        <h5 class="fw-bolder">Usuarios Registrados</h5>
+                        <div class="fst-italic text-muted"><b>{{total_usuarios}}</b></div>
+                    </div>
+                </div>
+                <div class="col mb-5 mb-5 mb-xl-0">
+                    <div class="text-center">
+                        <img class="img-fluid rounded-circle" style="max-height: 150px;" src="{%static 'assets/notepad.png' %}" alt="..." />
+                        <h5 class="fw-bolder">Publicaciones Creadas</h5>
+                        <div class="fst-italic text-muted"><b>{{total_publicaciones}}</b></div>
+                    </div>
+                </div>
+            </div>            
+            <!-- Blog preview section-->
+            <section class="py-5">                
+                <div class="container px-5 my-5" >
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-8 col-xl-6">
+                            <div class="text-center">
+                                <h2 class="fw-bolder">Ultima Publicacion</h2>
+                                <hr>
+                                <br>                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gx-5">
+                        {%if publicaciones|length == 0 %}
+                        <h1 style="text-align: center;">No hay publicaciones aun...</h1>
+                        {%else%}
+                            <div class="col-lg-4 mb-5" style="margin-left: auto; margin-right: auto;">
+                                <div class="card h-100 shadow border-0">
+                                    <img class="card-img-top" src="{{ultima_publicacion.imagen.url}}" alt="..." />
+                                    <div class="card-body p-4">
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{ultima_publicacion.pais}}</div>
+                                        <a class="text-decoration-none link-dark stretched-link" href="{%url 'publicaciones' %}"><h5 class="card-title mb-3">{{ultima_publicacion.titulo}}</h5></a>
+                                        <p class="card-text mb-0">{{ultima_publicacion.descripcion|slice:120|safe}}...</p>
+                                        <br>
+                                        <p class="card-text mb-0" style="color: grey;">Creado por: <i>{{ultima_publicacion.autor}}</i></p>
+                                        <p class="card-text mb-0" style="color: grey;">Fecha: <i>{{ultima_publicacion.fecha_viaje}}</i></p>                                                                                                                 
+                                    </div>                                
+                                </div>
+                            </div>
+                        {%endif%}                        
+                    </div>              
+                </div>
+            </section>
+        </main>        
+{%endblock%}

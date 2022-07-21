@@ -1,0 +1,30 @@
+{%extends "MillasViajerasApp/base.html"%}
+
+{%block title%}
+Millas Viajeras - Editar Publicacion
+{%endblock%}
+
+{%block contenido%}
+<br>
+    <div class="col-lg-6 mb-5" style="margin-left: auto; margin-right: auto;">
+        <div class="card h-100 shadow border-0">            
+            <div class="card-body p-4">
+                <h1>Editar Publicacion</h1>
+                <hr>
+                <form enctype="multipart/form-data" action="" method="POST">
+                    {% csrf_token %}
+                    
+                        <table>
+                    
+                            {{form.media}}
+                            {{form.as_table}}
+                    
+                        </table>
+                    
+                        <input type="submit" class="btn btn-primary" value="Editar Publicacion">
+                    
+                    </form>                                                 
+            </div>                                
+        </div>
+    </div>
+{%endblock%}

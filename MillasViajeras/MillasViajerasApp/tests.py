@@ -1,7 +1,7 @@
 import datetime
 from django.test import TestCase
 
-from .models import Publicaciones, Persona
+from .models import Publicaciones
 # Create your tests here.
 
 class PublicacionesTest(TestCase):
@@ -15,4 +15,8 @@ class PublicacionesTest(TestCase):
 
     def test_publicacion_descripcion(self):
         publicacion = Publicaciones.objects.get(titulo="Paseando por Recoleta")
-        self.assertEqual(publicacion.descripcion, "Gran viaje por Argentina")    
+        self.assertEqual(publicacion.descripcion, "Gran viaje por Argentina")  
+    
+    def test_publicacion_pais(self):
+        publicacion = Publicaciones.objects.get(pais="Argentina")
+        self.assertEqual(publicacion.pais, "Argentina")    
